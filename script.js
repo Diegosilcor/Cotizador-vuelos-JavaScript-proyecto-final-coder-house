@@ -1,28 +1,26 @@
-// Clase 3 desafio complementario
+// Desafio obligatorio clase 4
 
-let ingresarComida = prompt("¿Que deseas comer hoy?");
-let cantidad = parseInt(prompt ("¿Cuántos quieres comprar?"));
-while (ingresarComida != 'ESC') {
-    switch (ingresarComida) {
-        case "Hamburguesa":
-            alert("Tu pedido esta en proceso");
-            break;
-        case "Hamburguesa doble queso":
-            alert("Tu pedido esta en proceso");
-            break;
-        case "Pizza":
-            alert("Tu pedido esta en proceso");
-            break;
-        case "Hot dog":
-            alert("Tu pedido esta en proceso");
-            break;
-        case "Pollo frito":
-            alert("Tu pedido esta en proceso");
-            break;
-        default:
-            alert("Lo sentimos, no tenemos disponible ese menu");
-            break;
+function calculadoraDeMillas(operacion, x, y) {
+    if(operacion == "suma") {
+    return x + y    
+    } else if(operacion == "resta") {
+    return x - y 
+    } else if(operacion == "multiplicacion") {
+    return x * y       
+    } else if(operacion == "division") {
+    return x / y   
+    } else if (operacion == "exponenciacion") {
+    return x ** y
+    } else if (operacion == "resto") {
+    return x % y
+    } else {
+    return  -1
     }
-    ingresarComida = prompt("¿Que deseas comer hoy?");
-    cantidad = parseInt(prompt ("¿Cuántos quieres comprar?"));
 }
+
+console.log(calculadoraDeMillas("suma", 3, 6));
+console.log(calculadoraDeMillas("resta", 3, 6));
+console.log(calculadoraDeMillas("multiplicacion", 3, 6));
+console.log(calculadoraDeMillas("division", 3, 6));
+console.log(calculadoraDeMillas("exponenciacion", 3, 6));
+console.log(calculadoraDeMillas("resto", 3, 6));
