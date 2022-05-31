@@ -1,26 +1,25 @@
 // Desafio obligatorio clase 4
 
-function calculadoraDeMillas(operacion, x, y) {
-    if(operacion == "suma") {
-    return x + y    
-    } else if(operacion == "resta") {
-    return x - y 
-    } else if(operacion == "multiplicacion") {
-    return x * y       
-    } else if(operacion == "division") {
-    return x / y   
-    } else if (operacion == "exponenciacion") {
-    return x ** y
-    } else if (operacion == "resto") {
-    return x % y
-    } else {
-    return  -1
-    }
-}
+consultaDeMillas = prompt("Consulta el estado de tus millas");
+consultaDeMillas = parseInt(consultaDeMillas)
 
-console.log(calculadoraDeMillas("suma", 3, 6));
-console.log(calculadoraDeMillas("resta", 3, 6));
-console.log(calculadoraDeMillas("multiplicacion", 3, 6));
-console.log(calculadoraDeMillas("division", 3, 6));
-console.log(calculadoraDeMillas("exponenciacion", 3, 6));
-console.log(calculadoraDeMillas("resto", 3, 6));
+if (consultaDeMillas >= 100 && consultaDeMillas < 150) {
+	alert("Puedes canjearla por un vuelo a Chile");
+}else if (consultaDeMillas >= 150 && consultaDeMillas < 200) {
+	alert("Puedes canjearlo por un vuelo a Uruguay");
+
+}else if (consultaDeMillas >= 200 && consultaDeMillas < 250) {
+	alert("Puedes canjearlo por un vuelo a Ecuador");
+
+}else if (consultaDeMillas >= 250 && consultaDeMillas < 300) {
+	alert("Puedes canjearlo por un vuelo a Brasil");
+
+}else if (consultaDeMillas >= 300 && consultaDeMillas < 350) {
+	alert("Puedes canjearlo por un vuelo a Panama");
+
+}else if (consultaDeMillas >= 400 && consultaDeMillas > 450 ) {
+    alert("Puedes canjearlo por un vuelo a Francia");
+
+} else {
+	alert("Lo sentimos, necesitas seguir acumulando millas para ese vuelo");
+}
