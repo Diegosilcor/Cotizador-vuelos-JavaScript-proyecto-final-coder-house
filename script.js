@@ -1,7 +1,7 @@
 // Desafio obligatorio clase 4
 
 function calculadora(consultaDeMillas) {
-  while (consultaDeMillas == "ESC") {
+  while (consultaDeMillas !== "ESC") {
     consultaDeMillas = prompt("Consulta el estado de tus millas");
     consultaDeMillas = parseInt(consultaDeMillas);
 
@@ -18,8 +18,9 @@ function calculadora(consultaDeMillas) {
     } else if (consultaDeMillas >= 400 && consultaDeMillas < 450) {
       alert("Puedes canjearlo por un vuelo a Francia");
     } else {
-      alert("Lo sentimos, necesitas seguir acumulando millas para ese vuelo");
+      alert("Lo sentimos, no pudimos validar ese codigo");
     }
   }
 }
+
 calculadora();
