@@ -1,9 +1,8 @@
-//Desafio obligatorio clase 4
+// Desafio obligatorio clase 4
 
 function calculadora(consultaDeMillas) {
     while (consultaDeMillas !== "ESC") {
         consultaDeMillas = prompt("Consulta el estado de tus millas");
-        consultaDeMillas = parseInt(consultaDeMillas);
         if (parseInt(consultaDeMillas) >= 100 && parseInt(consultaDeMillas) < 150) {
             alert("Puedes canjearla por un vuelo a Chile");
         } else if (
