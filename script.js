@@ -32,7 +32,8 @@ function calculadora(consultaDeMillas) {
             alert("Puedes canjearlo por un vuelo a Francia");
         } else {
             alert("Lo sentimos, no tenes las millas disponibles para ese vuelo");
-        }
+            alert("No pudimos validar tu codigo, vuelve a intentarlo");
+        } 
     }
 }
 
