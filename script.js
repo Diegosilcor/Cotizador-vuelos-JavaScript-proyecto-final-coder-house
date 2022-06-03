@@ -27,14 +27,13 @@ function calculadora(consultaDeMillas) {
             alert("Puedes canjearlo por un vuelo a Panama");
         } else if (
             parseInt(consultaDeMillas) >= 400 &&
-            parseInt(consultaDeMillas) < 40
+            parseInt(consultaDeMillas) < 500
         ) {
             alert("Puedes canjearlo por un vuelo a Francia");
         } else {
-            alert("Lo sentimos, no pudimos validar ese codigo");
+            alert("Lo sentimos, no tenes las millas disponibles para ese vuelo");
         }
     }
 }
 
 calculadora();
-
