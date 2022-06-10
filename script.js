@@ -65,7 +65,7 @@ function millas(cantidadDeMillas) {
 
 millas();
 
-ArrayPlanificador1 = []
+ArrayPlanificador1 = ['destino']
     do {
         destino = prompt('Seleccione un destino');
         if (destino === "fin" || destino === "FIN" || destino === "Fin") {
@@ -73,8 +73,9 @@ ArrayPlanificador1 = []
         } else {
             aeropuertoSalida = prompt('Ingrese aeropuerto de salida');
             aeropuertoDeLlegada = prompt('Ingrese aeropuerto de llegada');
-            alert = ("Los datos ingresaron correctamente")
-            ArrayPlanificador1.push(new destino(aeropuertoSalida,aeropuertoDeLlegada));
+            alert (' ¡Bienvenido a bordo,disfrute de su vuelo!'); 
+            ArrayPlanificador1.push(new destino(aeropuertoSalida, aeropuertoDeLlegada))
+                
         }
     } while (destino === "fin" || destino === "FIN" || destino === "Fin");
 
