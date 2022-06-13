@@ -1,86 +1,137 @@
-destino = ['Argentina', 'Estados Unidos', 'Chile', 'Brasil', 'Canada', 'Europa', 'Asia'];
-aerolineas = ['Emirates', 'Aerolineas Argentinas', 'KLM', 'Iberia', 'Latam'];
-aeropuertoSalida = ['Ezeiza', 'Aeroparque', 'Adolfo suarez Madrid', ' El prat', 'Schipol', 'Jorge Chavez', 'Rio de Janeiro']
-aeropuertoDeLlegada = ['Ezeiza', 'Aeroparque', 'Adolfo suarez Madrid', ' El prat', 'Schipol', 'Jorge Chavez', 'Rio de Janeiro']
-cantidadDemillas =['100','150','200','250','300','350','400','450','500'] 
+// PRIMERA PRE ENTREGA DE TRABAJO FINAL
 
-function calculadora(consultaDeMillas) {
-    while (consultaDeMillas !== "ESC") {
-        consultaDeMillas = prompt("Consulta el estado de tus millas");
-        if (parseInt(consultaDeMillas) >= 100 && parseInt(consultaDeMillas) < 150) {
-            alert("Puedes canjearla por un vuelo a Chile");
-        } else if (
-            parseInt(consultaDeMillas) >= 150 &&
-            parseInt(consultaDeMillas) < 200
-        ) {
-            alert("Puedes canjearlo por un vuelo a Uruguay");
-        } else if (
-            parseInt(consultaDeMillas) >= 200 &&
-            parseInt(consultaDeMillas) < 250
-        ) {
-            alert("Puedes canjearlo por un vuelo a Ecuador");
-        } else if (
-            parseInt(consultaDeMillas) >= 300 &&
-            parseInt(consultaDeMillas) < 350
-        ) {
-            alert("Puedes canjearlo por un vuelo a Brasil");
-        } else if (
-            parseInt(consultaDeMillas) >= 350 &&
-            parseInt(consultaDeMillas) < 400
-        ) {
-            alert("Puedes canjearlo por un vuelo a Panama");
-        } else if (
-            parseInt(consultaDeMillas) >= 400 &&
-            parseInt(consultaDeMillas) < 500
-        ) {
-            alert("Puedes canjearlo por un vuelo a Francia");
-        } else {
-            alert("Lo sentimos, no tenes las millas disponibles para ese vuelo");
-            alert("No pudimos validar tu codigo, vuelve a intentarlo");
-        } 
-    }
+//VARIABLES GLOBALES
+let america = 0;
+let europa = 0;
+let asia = 0;
+let oceania = 0;
+let cantidad = 0;
+let tipo = "";
+let resultadoAmerica = 0;
+let resultadoEuropa = 0;
+let resultadoAsia = 0;
+let resultadoOceania = 0;
+let total = 0;
+
+//CONSTANTES
+
+const precioAmerica = 1000;
+const precioEuropa = 1200;
+const precioAsia = 2000;
+const precioOceania = 6000;
+const descuento = 0.90;
+const iva = 0.21;
+
+//FUNCION PARA SOLICITAR VUELOS AMERICA
+
+function solicitarAmerica() {
+    america = "America";
+    america = parseInt(prompt("Tarifas de vuelos para America\n\nPrecio unitario: " + precioAmerica + " PESOS\nDescuento del 10% para cantidades superiores a 1 pasaje\n\nIngrese la cantidad:"));
+
+    resultadoAmerica = calculos();
+    return resultadoAmerica;
 }
 
-calculadora();
+//FUNCION PARA SOLICITAR VUELOS EUROPA
 
-function millas(cantidadDeMillas) {
-    while (cantidadDeMillas !== "ESC") {
-        cantidadDeMillas = prompt("Ingresa tus millas para seleccionar la tarifa");
-        if (parseInt(cantidadDeMillas) >= 100 && parseInt(cantidadDeMillas) < 150) {
-            alert("Clase turista");
-        } else if (
-            parseInt(cantidadDeMillas) >= 150 && parseInt(cantidadDeMillas) < 200
-        ) {
-            alert("Clase club economy")
-        } else if (
-            parseInt(cantidadDeMillas) >= 200 &&
-            parseInt(cantidadDeMillas) < 500
-        ) {
-            alert("Clase business")
-        } else {
-            alert("Lo sentimos no tenes la millas disponibles para esa tarifa")
-        }
-    }
+function solicitarEuropa() {
+    europa = "Europa";
+    europa = parseInt(prompt("Tarifas de vuelos para Europa\n\nPrecio unitario: " + precioEuropa + " PESOS\nDescuento del 10% para cantidades superiores a 1 pasaje\n\nIngrese la cantidad:"));
+
+    resultadoEuropa = calculos();
+    return resultadoEuropa;
+}
+//FUNCION PARA SOLICITAR VUELOS ASIA
+
+function solicitarAsia() {
+    asia = "Asia";
+    asia = parseInt(prompt("Tarifas de vuelos para Asia\n\nPrecio unitario: " + precioAsia + " PESOS\nDescuento del 10% para cantidades superiores a 1 pasaje\n\nIngrese la cantidad:"));
+
+    resultadoAsia = calculos();
+    return resultadoAsia;
+}
+//FUNCION PARA SOLICITAR VUELOS A  OCEANIA
+function solicitarOceania() {
+    oceania = "Oceania";
+    oceania = parseInt(prompt("Tarifas de vuelos para Oceania\n\nPrecio unitario: " + precioOceania + " PESOS\nDescuento del 10% para cantidades superiores a 1 pasaje\n\nIngrese la cantidad:"));
+
+    resultadoOceania = calculos();
+    return resultadoOceania;
+}
+//OBJETO COTIZACION
+function Cotizacion(cantAmerica, cantEuropa, cantAsia, cantOceania) {
+    this.cantAmerica = cantAmerica;
+    this.cantEuropa = cantEuropa;
+    this.cantAsia = cantAsia;
+    this.cantOceania = cantOceania;
+    this.cotizar = cotizar;
 }
 
-millas();
+//COMPONENTES DEL OBJETO COTIZACION
+this.composicion = function () {
+    console.log("\n\nMi cotización finalmente se compuso de: " +
+        "\n" + cantAmerica + " Vuelos America" +
+        "\n" + cantAsia + " Vuelos Asia" +
+        "\n" + cantEuropa + " Vuelos Europa" +
+        "\n" + cantOceania + " Vuelos Oceania");
+}
 
-ArrayPlanificador1 = ['destino']
-    do {
-        destino = prompt('Seleccione un destino');
-        if (destino === "fin" || destino === "FIN" || destino === "Fin") {
-            break;
-        } else {
-            aeropuertoSalida = prompt('Ingrese aeropuerto de salida');
-            aeropuertoDeLlegada = prompt('Ingrese aeropuerto de llegada');
-            alert (' ¡Bienvenido a bordo,disfrute de su vuelo!'); 
-            ArrayPlanificador1.push(new destino(aeropuertoSalida, aeropuertoDeLlegada))
-                
-        }
-    } while (destino === "fin" || destino === "FIN" || destino === "Fin");
+//CALCULAR EL VALOR DE LA COTIZACION
 
-console.log(ArrayPlanificador1);
-    
+this.cotizar = function () {
 
-    
+    total = resultadoAmerica + resultadoEuropa + resultadoAsia + resultadoOceania;
+    totalIva = total + (total * iva);
 
+    console.log("\n\nCOTIZACIÓN FINAL\n\nVUELOS | Cantidad: " + cantAmerica + " / Subtotal: " + resultadoAmerica + " PESOS" +
+        "\nVUELOS EUROPA | Cantidad: " + cantEuropa + " / Subtotal: " + resultadoeEuropa + " PESOS" +
+        "\nCOMBOS DE VUELOS ASIA  | Cantidad: " + cantAsia + " / Subtotal: " + resultadoAsia + " PESOS" +
+        "\nCOMBOS DE VUELOS OCEANIA | Cantidad: " + cantOceania + " / Subtotal: " + resultadoOceania + " PESOS" +
+        "\n\nTOTAL: " + total + " PESOS" +
+        "\nTOTAL + IVA (21%): " + totalIva + " PESOS" +
+        "\n\nARREGLO RESUMEN DE CANTIDADES: " + arregloResumenCantidades());
+
+    alert("COTIZACIÓN FINAL\n\nVUELOS | Cantidad: " + cantAmerica + " / Subtotal: " + resultadoAmerica + " PESOS" +
+        "\nCOMBOS DE VUELOS EUROPA | Cantidad: " + cantEuropa + " / Subtotal: " + resultadoEuropa + " PESOS" +
+        "\nCOMBOS DE VUELOS ASIA | Cantidad: " + cantAsia + " / Subtotal: " + resultadoAsia + " PESOS" +
+        "\nCOMBOS DE VUELOS OCEANIA| Cantidad: " + cantOceania + " / Subtotal: " + resultadoOceania + " PESOS" +
+        "\n\nTOTAL: " + total + " PESOS" +
+        "\nTOTAL + IVA (21%): " + totalIva + " PESOS" +
+        "\n\nARREGLO RESUMEN DE CANTIDADES: " + arregloResumenCantidades());
+}
+
+
+//FUNCION QUE INSTANCIA AL OBJETO Y CALCULA EN ÉL LA COTIZACION FINAL
+
+function totalCotizacion() {
+    //INSTANCIA DEL OBJETO COTIZACION
+
+    var miCotizacion = new Cotizacion(america, europa, asia, oceania);
+    miCotizacion.cotizar();
+    miCotizacion.composicion();
+}
+//ARREGLO RESUMEN DE CANTIDADES SOLICITADAS
+function arregloResumenCantidades() {
+    var partesCotizacion = [];
+    partesCotizacion.push("America: " + america);
+    partesCotizacion.push("Europa: " + europa);
+    partesCotizacion.push("Asia: " + asia);
+    partesCotizacion.push("Oceania: " + oceania);
+    partesCotizacion = partesCotizacion.join(" / ");
+    return partesCotizacion;
+}
+
+function calculos(america, europa, asia, oceania) {
+    if (cantidad == 1 || cantidad == 0) {
+        resultado = cantidad * precio;
+        console.log("Cantidad de " + tipo + ": " + cantidad + " | Precio: " + resultado + " PESOS");
+        alert("Cantidad de " + tipo + ": " + cantidad + " | Precio: " + resultado + " PESOS");
+    }
+    if (cantidad > 1) {
+        resultado = cantidad * (precio * descuento);
+        console.log("Cantidad de " + tipo + ": " + cantidad + " | Precio: " + resultado + " PESOS");
+        alert("Cantidad de " + tipo + ": " + cantidad + " | Precio: " + resultado + " PESOS");
+    }
+    return resultado;
+
+}
