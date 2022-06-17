@@ -1,14 +1,6 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #cdcdb3;
-}
-h1 {
-  position: relative;
-  text-align: center;
-  color: #ebe6e6;
-  font-size: 50px;
-}
 
+
+/*COTIZADOR*/
 p,
 tr {
   font-weight: 300;
@@ -42,6 +34,7 @@ table {
   padding-bottom: 20px;
   padding-left: 10px;
   text-align: center;
+  justify-content: center;
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
@@ -148,3 +141,136 @@ button {
 .btn-2:active {
   top: 2px;
 }
+
+/*FORMULARIOS*/
+:root {
+    --colorTextos: #49454567;
+}
+
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e6e6e8;
+    background: -webkit-linear-gradient(to right, #f7f5f7, #c1cffc);
+    background: linear-gradient(to right, #f9f6f9, #fafbfc);
+    height: 400px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    font-weight: 10;
+}
+
+form{
+    background: rgb(241, 240, 244);
+    padding: 40px 0;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+}
+
+.form{
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo{
+    position: relative;
+    margin: 45px ;
+}
+
+input{
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+
+
+
+input:focus{ 
+    outline: none;
+    color: #5e5d5d;
+}
+
+label{
+    color: var(--colorTextos);
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+input:focus~label,
+input:valid~label{
+    top: -14px;
+    font-size: 12px;
+    color: #2196f3;
+}
+
+.barra{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.barra::before{
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #2487f0, #4568DC);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:focus~.barra::before{
+    width: 100%;
+}
+
+.warnings{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: #ec0e0e;
+    padding-top: 20px;
+}
+
+button{
+    font-family: Arial, Helvetica, sans-serif;
+    background: -webkit-linear-gradient(to right, #1f2122, #4568DC);
+    background: linear-gradient(to right, #4431e9, #4568DC);
+    border-radius: 10px;
+    border-color: rgb(5, 5, 6);
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+    color: rgb(244, 237, 237);
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media screen and (max-width:500px){
+    form{
+        width: 80%;
+    }
+}
+

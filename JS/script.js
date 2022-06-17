@@ -142,3 +142,5 @@ function calculos(cantidad,tipo,precio,resultado){
     return resultado;
 
 }
+
+
