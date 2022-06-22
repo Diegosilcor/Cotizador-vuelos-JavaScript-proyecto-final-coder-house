@@ -80,10 +80,8 @@ function Cotizacion(cantAmerica, cantEuropa, cantAsia, cantOceania){
 //CALCULAR EL VALOR DE LA COTIZACION
 
 this.cotizar = function() {
-
     total = resultadoAmerica + resultadoEuropa + resultadoAsia + resultadoOceania;
     totalIva = total + (total*iva);
-
     console.log("\n\nCOTIZACIÓN FINAL\n\nVUELOS | Cantidad: " + cantAmerica + " / Subtotal: " + resultadoAmerica + " PESOS" +
         "\nVUELOS EUROPA | Cantidad: " + cantEuropa + " / Subtotal: " + resultadoEuropa + " PESOS" +
         "\nPAQUETES DE VUELOS ASIA  | Cantidad: " + cantAsia + " / Subtotal: " + resultadoAsia + " PESOS" +
@@ -98,8 +96,7 @@ this.cotizar = function() {
         "\n\nTOTAL: " + total + " PESOS" +
         "\nTOTAL + IVA (21%): " + totalIva + " PESOS" +
         "\n\nARREGLO RESUMEN DE CANTIDADES: " + arregloResumenCantidades());
-}
-
+    }
 } 
 
 //FUNCION QUE INSTANCIA AL OBJETO Y CALCULA EN ÉL LA COTIZACION FINAL
