@@ -72,28 +72,28 @@ body {
     background-image: url("/images/avion\ 1.jpeg");
   }
   25% {
-    background-image: url("../images/avion\ 3.jpeg");
+    background-image: url("/images/avion\ 3.jpeg");
   }
 
   26% {
-    background-image: url("../images/avion\ 8.jpg");
+    background-image: url("/images/avion\ 8.jpg");
   }
   50% {
-    background-image: url("../images/avion\ 7.png");
+    background-image: url("/images/avion\ 7.png");
   }
 
   51% {
-    background-image: url("../images/avion\ 1.jpeg");
+    background-image: url("/images/avion\ 1.jpeg");
   }
   75% {
-    background-image: url("../images/avion\ 3.jpeg");
+    background-image: url("/images/avion\ 3.jpeg");
   }
 
   76% {
-    background-image: url("../images/avion\ 5.png");
+    background-image: url("/images/avion\ 5.png");
   }
   100% {
-    background-image: url("../images/avion\ 10.jpg");
+    background-image: url("/images/avion\ 10.jpg");
   }
 }
 /*MEDIA QUERIES*/
