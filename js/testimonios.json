@@ -8,14 +8,14 @@
     },
     {
         "id": 2,
-        "first_name": "Ayelen",
+        "first_name": "Virginia",
         "last_name": "Diaz",
         "testimonio": "Disfute muchismas mis vacaciones, gracias a las promociones de los vuelos",
         "email": "ayediaz@storify.com"
     },
     {
         "id": 3,
-        "first_name": "Gustavo",
+        "first_name": "Marcos",
         "last_name": "Herrera",
         "testimonio": "Gran equipo de asesores",
         "email": "gustavo2@drupal.org"
@@ -43,7 +43,7 @@
     },
     {
         "id": 7,
-        "first_name": "Alan",
+        "first_name": "Ariel",
         "last_name": "Bordon",
         "testimonio": "Compre el paquete para Oceania un destino exotico y hermoso, muchas gracias a todo el equipo",
         "email": "alnabor6@hotmail.ar"
