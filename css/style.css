@@ -18,7 +18,7 @@ body {
       rgba(55, 51, 51, 0.5),
       rgba(52, 51, 49, 0.5)
     ),
-    url("/images/avion\ 10.jpg");
+    url("../images/avion\ 10.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
