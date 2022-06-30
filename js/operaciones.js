@@ -665,3 +665,21 @@ $(function () {
     }
   });
 });
+
+
+// TOASTIFY
+// DESAFIO COMPLEMENTARIO CLASE 13
+const btn = document.getElementById("btn-click");
+btn.addEventListener("click", () => {
+    Toastify({
+        text: "Bienvenido a tu compra de vuelos",
+        duration: 2500,
+        destination: "https://www.flightradar24.com/40.61,-3.22/9",
+        gravity: "bottom",
+        position: "center",
+        style: {
+            background:  "linear-gradient(to right, #DEB887, #000000)",
+        }
+        
+    }).showToast();
+})
