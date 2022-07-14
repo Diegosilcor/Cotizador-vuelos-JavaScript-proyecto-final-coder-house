@@ -384,13 +384,13 @@ function agregar() {
   elementoAmerica.innerText =
     "America: " + america.toUpperCase() + " = $ " + resultadoAmerica + "  ";
   elementoEuropa.innerText =
-    "Europa: " + europa.toLowerCase() + " = $  " + resultadoEuropa + " ";
+    "Europa: " + europa.toUpperCase() + " = $  " + resultadoEuropa + " ";
   elementoAsia.innerText =
-    "Asia " + asia.toLowerCase() + " = $  " + resultadoAsia + " ";
+    "Asia: " + asia.toUpperCase() + " = $  " + resultadoAsia + " ";
   elementoOceania.innerText =
-    "Oceania: " + oceania.toLowerCase() + " = $  " + resultadoOceania + " ";
+    "Oceania: " + oceania.toUpperCase() + " = $  " + resultadoOceania + " ";
   elementoTotal.innerText = "TOTAL: = $ "  + total + " ";
-  elementoTotalIva.innerText = "TOTAL + IVA (21%): " + totalIva + " $";
+  elementoTotalIva.innerText = "TOTAL + IVA (21%): = $ " + totalIva + " ";
 
   const divResultado = document.createElement("div");
   divResultado.id = "divResultado";
