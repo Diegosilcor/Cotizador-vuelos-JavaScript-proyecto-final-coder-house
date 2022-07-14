@@ -3,7 +3,7 @@
 Swal.fire({
   title: "Bienvenido a Radar Flight",
   text: "Selecciona tu pais",
-  background: "rgba(20, 5, 4, .5)",
+  background: "rgba(255, 255, 255, .9)",
   confirmButtonText: "Seleccionar",
   footer: "Copyright © 2022.Todos los derechos reservados. Radar flight",
   padding: "1rem",
