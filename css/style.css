@@ -1,3 +1,57 @@
+/*SWEET ALERT-HOME*/
+.text-class {
+  color: #f8f9fa;
+}
+
+.popup-class {
+  border-radius: 20px;
+  border: 2px solid rgb(241, 240, 240);
+}
+
+.title-class {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(217, 216, 216);
+}
+
+.boton-class {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: rgb(227, 222, 222);
+  border-radius: 20px;
+  border: 1px solid #dadde0;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.contenido-class {
+  background: rgba(241, 241, 241, 0.8);
+  backdrop-filter: blur(2px);
+}
+.footer-class {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
+.input-class {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
+
+.cancel-class {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: rgb(227, 222, 222);
+  border-radius: 20px;
+  border: 1px solid #dadde0;
+  padding: 10px;
+  background-color: #292b2d;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 /*
   COTIZADOR
 */

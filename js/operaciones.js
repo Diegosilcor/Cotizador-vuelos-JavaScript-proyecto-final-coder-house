@@ -1,13 +1,15 @@
-// SEGUNDA PRE ENTREGA DE TRABAJO FINAL DESAFIO COPLEMENTARIO CLASE 12. JAVASCRIPT
+// TRABAJO FINAL DE JAVASCRIPT
 // Diego Ignacio Silva Cordoba
 
 //VARIABLES
+let vuelos = 0;
 let america = 0;
 let europa = 0;
 let asia = 0;
 let oceania = 0;
 let cantidad = 0;
 let tipo = "";
+let resultadoVuelos = 0;
 let resultadoAmerica = 0;
 let resultadoEuropa = 0;
 let resultadoAsia = 0;
@@ -19,7 +21,8 @@ let nombre;
 let email;
 
 //CONSTANTES
-const precioAmerica = 1000;
+let precioVuelos = 0;
+let precioAmerica = 0;
 let precioEuropa = 0;
 let precioAsia = 0;
 let precioOceania = 0;
@@ -31,11 +34,13 @@ let solicitanteJSON = {
   nombre: "",
   email: "",
   total: null,
+  vuelos: "",
   america: "",
   europa: "",
   asia: "",
   oceania: "",
-  tituloAmerica: null,
+  tituloVuelos:"",
+  tituloAmerica: "",
   tituloEuropa: "",
   tituloAsia: "",
   tituloOceania: "",
@@ -43,11 +48,35 @@ let solicitanteJSON = {
   info: "",
 };
 
+// FUNCION PARA SOLICITAR VUELOS
+function solicitarVuelos() {
+  tipo = "VUELOS";
+  vuelos = d.getElementById("vuelos").value;
+  resultadoVuelos = calculos(vuelos, tipo, precioVuelos);
+  return resultadoVuelos;
+}
+
 //FUNCION PARA SOLICITAR AMERICA
 function solicitarAmerica() {
-  tipo = "AMERICA";
-  america = d.getElementById("america").value;
-  resultadoAmerica = calculos(america, tipo, precioAmerica);
+  tipo = "Paquetes America";
+  america = document.querySelector("#America").value;
+  filtroPrecioAmerica = productosAmerica.find(
+    (elem) => elem.seleccion.toUpperCase() == america
+  );
+  if (filtroPrecioAmerica) {
+    console.log(
+      "Paquete America seleccionado: " +
+        america +
+        " | Precio:  " +
+        filtroPrecioAmerica.precio
+    );
+    precioAmerica = parseInt(filtroPrecioAmerica.precio);
+    cantidad = 1;
+  } else {
+    console.log("No seleccionó America: " + america);
+    cantidad = 0;
+  }
+  resultadoAmerica = calculos(cantidad, tipo, precioAmerica);
   return resultadoAmerica;
 }
 
@@ -124,7 +153,8 @@ function solicitarOceania() {
 }
 
 //OBJETO COTIZACION
-function Cotizacion(cantAmerica, cantEuropa, cantAsia, cantOceania) {
+function Cotizacion(cantVuelos,cantAmerica, cantEuropa, cantAsia, cantOceania) {
+  this.cantVuelos = cantVuelos
   this.cantAmerica = cantAmerica;
   this.cantEuropa = cantEuropa;
   this.cantAsia = cantAsia;
@@ -134,9 +164,12 @@ function Cotizacion(cantAmerica, cantEuropa, cantAsia, cantOceania) {
   this.composicion = function () {
     console.log(
       "\n\nMi cotización finalmente se compuso de: " +
-        "\n\n" +
+      "\n\n" +
+        cantVuelos +
+        " vuelos" +
+        "\n" +
         cantAmerica +
-        " america" +
+        " Paquetes america" +
         "\n" +
         cantEuropa +
         " Paquetes europa" +
@@ -153,11 +186,16 @@ function Cotizacion(cantAmerica, cantEuropa, cantAsia, cantOceania) {
 
   this.cotizar = function () {
     total =
-      resultadoAmerica + resultadoEuropa + resultadoAsia + resultadoOceania;
+    resultadoVuelos + resultadoAmerica + resultadoEuropa + resultadoAsia + resultadoOceania;
     totalIva = total + total * iva;
 
     console.log(
-      "\n\nCOTIZACIÓN FINAL\n\nAMERICA | Cantidad: " +
+      "\n\nCOTIZACIÓN FINAL\n\nVUELOS | Cantidad: " +
+       cantVuelos +
+      " / Subtotal: " +
+      resultadoVuelos +
+      " PESOS" +
+      "\nPAQUETES AMERICA | Cantidad: " +
         cantAmerica +
         " / Subtotal: " +
         resultadoAmerica +
@@ -199,16 +237,17 @@ function totalCotizacion() {
   if (
     $("#nombre").val().length > 0 &&
     $("#email").val().length > 0 &&
-    $("#america").val().length > 0 &&
+    $("#vuelos").val().length > 0 &&
     validarEmail($("#email").val()) == true
   ) {
+    solicitarVuelos();
     solicitarAmerica();
     solicitarEuropa();
     solicitarAsia();
     solicitarOceania();
 
     //INSTANCIA DEL OBJETO COTIZACION
-    let miCotizacion = new Cotizacion(america, europa, asia, oceania);
+    let miCotizacion = new Cotizacion(vuelos,america, europa, asia, oceania);
     miCotizacion.cotizar();
 
     //JSON Y SESSIONSTORAGE
@@ -231,13 +270,13 @@ function totalCotizacion() {
         $("#email").focus();
       } else {
         if (
-          !$("#america").val().length &&
+          !$("#vuelos").val().length &&
           $("#componentes").css("display") == "none"
         ) {
-          $("#america").focus();
+          $("#vuelos").focus();
         } else {
-          if (!$("#america").val().length) {
-            $("#america").focus();
+          if (!$("#vuelos").val().length) {
+            $("#vuelos").focus();
           }
         }
       }
@@ -251,10 +290,12 @@ function guardarJSON(total) {
   solicitanteJSON.nombre = d.getElementById("nombre").value;
   solicitanteJSON.email = d.getElementById("email").value;
   solicitanteJSON.total = total;
-  solicitanteJSON.america = d.getElementById("america").value;
+  solicitanteJSON.vuelos = d.getElementById("vuelos").value; 
+  solicitanteJSON.america = d.getElementById("America").value;
   solicitanteJSON.europa = d.getElementById("Europa").value;
   solicitanteJSON.asia = d.getElementById("Asia").value;
   solicitanteJSON.oceania = d.getElementById("Oceania").value;
+  solicitanteJSON.tituloVuelos = d.getElementById("tituloVuelos").value;
   solicitanteJSON.tituloAmerica = d.getElementById("tituloAmerica").value;
   solicitanteJSON.tituloEuropa = d.getElementById("tituloEuropa").value;
   solicitanteJSON.tituloAsia = d.getElementById("tituloAsia").value;
@@ -297,6 +338,7 @@ function agregar() {
   let elementoCotizacion;
   let elementoNombre;
   let elementoEmail;
+  let elementoVuelos;
   let elementoAmerica;
   let elementoEuropa;
   let elementoAsia;
@@ -314,6 +356,7 @@ function agregar() {
   elementoCotizacion = d.createElement("h1");
   elementoNombre = d.createElement("p");
   elementoEmail = d.createElement("p");
+  elementoVuelos = d.createElement("p");
   elementoAmerica = d.createElement("p");
   elementoEuropa = d.createElement("p");
   elementoAsia = d.createElement("p");
@@ -325,6 +368,7 @@ function agregar() {
   elementoCotizacion.id = "tituloPresupuesto";
   elementoNombre.id = "nombrePresupuesto";
   elementoEmail.id = "emailPresupuesto";
+  elementoVuelos.id = "vuelosPresupuesto";
   elementoAmerica.id = "americaPresupuesto";
   elementoEuropa.id = "europaPresupuesto";
   elementoAsia.id = "asiaPresupuesto";
@@ -335,22 +379,25 @@ function agregar() {
   elementoCotizacion.innerText = "Presupuesto Final";
   elementoNombre.innerText = "Nombre: " + nombre.value;
   elementoEmail.innerText = "Correo electrónico: " + email.value;
+  elementoVuelos.innerText =
+    "Vuelos: " + vuelos + "  " + " ";
   elementoAmerica.innerText =
-    "America: " + america + " / " + resultadoAmerica + " PESOS";
+    "America: " + america.toUpperCase() + " = $ " + resultadoAmerica + "  ";
   elementoEuropa.innerText =
-    "Europa: " + europa.toLowerCase() + " / " + resultadoEuropa + " PESOS";
+    "Europa: " + europa.toLowerCase() + " = $  " + resultadoEuropa + " ";
   elementoAsia.innerText =
-    "Asia " + asia.toLowerCase() + " / " + resultadoAsia + " PESOS";
+    "Asia " + asia.toLowerCase() + " = $  " + resultadoAsia + " ";
   elementoOceania.innerText =
-    "Oceania: " + oceania.toLowerCase() + " / " + resultadoOceania + " PESOS";
-  elementoTotal.innerText = "TOTAL: " + total + " PESOS";
-  elementoTotalIva.innerText = "TOTAL + IVA (21%): " + totalIva + " PESOS";
+    "Oceania: " + oceania.toLowerCase() + " = $  " + resultadoOceania + " ";
+  elementoTotal.innerText = "TOTAL: = $ "  + total + " ";
+  elementoTotalIva.innerText = "TOTAL + IVA (21%): " + totalIva + " $";
 
   const divResultado = document.createElement("div");
   divResultado.id = "divResultado";
   divResultado.appendChild(elementoCotizacion);
   divResultado.appendChild(elementoNombre);
   divResultado.appendChild(elementoEmail);
+  divResultado.appendChild(elementoVuelos);
   divResultado.appendChild(elementoAmerica);
   divResultado.appendChild(elementoEuropa);
   divResultado.appendChild(elementoAsia);
@@ -364,7 +411,8 @@ function agregar() {
 //ARREGLO RESUMEN DE CANTIDADES SOLICITADAS
 function arregloResumenCantidades() {
   let partesCotizacion = [];
-  partesCotizacion.push("america: " + america);
+  partesCotizacion.push("Vuelos: " + vuelos);
+  partesCotizacion.push("Paquetes America: " + america);
   partesCotizacion.push("Paquetes Europa " + europa);
   partesCotizacion.push("Paquetes Asia " + asia);
   partesCotizacion.push("Paquetes Oceania: " + oceania);
@@ -375,11 +423,14 @@ function arregloResumenCantidades() {
 // VALIDAR NUMERO
 function noEsNumero(numero, tipo) {
   if (isNaN(numero) || numero < 0) {
-    alert(
-      "Debes ingresar una Cantidad de " +
-        tipo +
+      Swal.fire({
+      title: 'Debes ingresar una cantidad de',
+      icon: 'error',
+      background: '#FFDAB9',
+      padding: '0'
+      + tipo +
         " válido\nHaz una nueva solicitud"
-    );
+  }); 
   }
 }
 
@@ -421,22 +472,29 @@ function validarEmail(valor) {
   ) {
     return true;
   } else {
-    alert("La dirección correo electrónico es incorrecta.");
-    $("#email").focus();
+    Swal.fire({
+      title: 'La dirección de correo electrónico es incorrecta',
+      icon: 'error',
+      background: '#FFDAB9',
+      padding: '0'
+  }); // Agrego Sweet Alert
+    $("#email").focus(); 
     return false;
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", router);
 window.addEventListener("hashchange", router);
 
 // CON AJAX
 
+
 const PaginaAjaxTestimonios = {
   render: function () {
     $.ajax({
       type: "GET",
-      url: "js/testimonios.json",
+      url: "js/data/testimonios.json",
       dataType: "json",
       success: function (data, status, jqXHR) {
         console.log(jqXHR);
@@ -551,9 +609,9 @@ $(function () {
             console.log("JQUERY - Debe ingresar un correo electrónico");
             $("#email").focus();
           } else {
-            if ($("#america").val().length == "") {
-              console.log("JQUERY - Debe ingresar la cantidad de pasajes");
-              $("#america").focus();
+            if ($("#vuelos").val().length == "") {
+              console.log("JQUERY - Debe ingresar la cantidad de vuelos");
+              $("#vuelos").focus();
             }
           }
         }
@@ -563,26 +621,7 @@ $(function () {
 
   //MUESTRO LAS OPCIONES A COTIZAR AL HACER CLIC EN SIGUIENTE
   $("div #pages").on("click", "legend#info", function () {
-    //$('#info').click(function () {
-
-    // console.log("JQUERY - Activo Ventana con Información de Precios")
-    // alert("LISTADO DE VUELOS:\n\n" +
-    //     "VUELOS\n" +
-    //     "-1 Vuelos | Precio: " + precioAmerica + " PESOS\n" +
-    //     "Descuento del 10% para cantidades superiores a 1 logo\n\n" +
-    //     "PAQUETES EUROPA:\n" +
-    //     "-3 pasajes, 3 asientos, 3 equipajes | Precio: 3000 PESOS\n" +
-    //     "-5 pasajes, 5 asientos, 5 equipajes  | Precio: 5000 PESOS\n" +
-    //     "-7 pasajes, 7 asientos, 7 equipajes  | Precio: 7000 PESOS\n\n" +
-    //     "PAQUETES ASIA:\n" +
-    //     "-2 perosnas | Precio: 5000  PESOS\n" +
-    //     "-4 personas | Precio: 8000 PESOS\n" +
-    //     "-6 personas | Precio: 10000 PESOS\n\n" +
-    //     "PAQUETES OCEANIA:\n" +
-    //     "-4 personas, 4 asientos, 4 equipaje | Precio: 7000 PESOS\n" +
-    //     "-6 personas, 6 asientos, 6 equipaje | Precio: 9000 PESOS\n" +
-    //     "-8 personas, 8 asientos, 8 equipaje | Precio: 12000 PESOS\n\n");
-
+   
     //Transición habia abajo al mostrar los componentes que se pueden solicitar
     $("#componentes").slideDown(2000, function () {
       console.log("JQUERY - Mostrando los componentes de la cotización");
@@ -595,6 +634,11 @@ $(function () {
       console.log("JQUERY - Bajando con scroll a los componenetes");
 
       //LLENANDO LOS OPTION DE LOS SELECT DEL HTML DESDE DB.JS AL MOSTRAR DIV COMPONENTES
+
+        const selectAmerica = document.getElementById("America");
+      console.log("selectAmerica: " + selectAmerica.id);
+      const optionAmerica = listaSelect(productosAmerica, "seleccion");
+      cargarContenido(optionAmerica, selectAmerica);
 
       const selectEuropa = document.getElementById("Europa");
       console.log("selectEuropa: " + selectEuropa.id);
@@ -642,13 +686,13 @@ $(function () {
         console.log("JQUERY - Bajo hasta el resultado de la cotización");
       });
       const divAdicional = $("#adicional");
-      divAdicional.empty();
-
+      
       //AGREGO ELEMENTOS AL DOM AJAX Y HACIENDO LECTURA EN ADICIONAL.JSON
       $.ajax({
         url: "js/adicional.json",
         success: function (data, status, jqXHR) {
           data.forEach((element) => {
+            divAdicional.empty();
             divAdicional.append(
               `<br><img class="imgAjax" src="${element.imagen}" alt="">`
             );
@@ -665,21 +709,3 @@ $(function () {
     }
   });
 });
-
-
-// TOASTIFY
-// DESAFIO COMPLEMENTARIO CLASE 13
-const btn = document.getElementById("btn-click");
-btn.addEventListener("click", () => {
-    Toastify({
-        text: "Bienvenido a tu compra de vuelos",
-        duration: 2500,
-        destination: "https://www.flightradar24.com/40.61,-3.22/9",
-        gravity: "bottom",
-        position: "center",
-        style: {
-            background:  "linear-gradient(to right, #DEB887, #000000)",
-        }
-        
-    }).showToast();
-})

@@ -8,19 +8,23 @@ let formularioHTML = `<form id="formulario" name="form" action="cotizador.html#/
 <legend id="info">Siguiente</legend>
 <br>
 <div id="componentes" class="hidden">
+  <label id="tituloVuelos" for="vuelos" class="light">Vuelos</label>
+  <input type="number" id="vuelos" name="vuelos" min="0">
   <label id="tituloAmerica" for="america" class="light">America</label>
-  <input type="number" id="america" name="america" min="0">
+  <select id="America" name="america">
+    <option value="">Seleccionar vuelo</option>
+  </select>
   <label id="tituloEuropa" for="europa" class="light">Europa</label>
   <select id="Europa" name="europa">
-    <option value="">- Seleccionar -</option>
+    <option value="">Seleccionar vuelo</option>
   </select>
   <label id="tituloAsia" for="asia" class="light">Asia</label>
   <select id="Asia" name="asia">
-    <option value="">- Seleccionar -</option>
+    <option value="">Seleccionar vuelo</option>
   </select>
   <label id="tituloOceania" for="oceania" class="light">Oceania</label>
   <select id="Oceania" name="oceania">
-    <option value="">- Seleccionar -</option>
+    <option value="">Seleccionar vuelo</option>
   </select>
   <button id="cotizar" class="custom-btn btn-3" type="submit">Cotizar</button>
   <br>
