@@ -476,7 +476,7 @@ function validarEmail(valor) {
       title: 'La dirección de correo electrónico es incorrecta',
       icon: 'error',
       background: '#FFDAB9',
-      padding: '0'
+      padding: '0',
   }); // Agrego Sweet Alert
     $("#email").focus(); 
     return false;
